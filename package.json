@@ -19,6 +19,7 @@
     "clsx": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "react-player": "^1.15.3",
     "react-qr-reader": "^2.2.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "latest",

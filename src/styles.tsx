@@ -18,4 +18,16 @@ export const Button = styled.div<cssprops>`
   -moz-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   font-size: 1.5em;
+  cursor: pointer;
+`;
+
+export const Layout = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+`;
+
+export const Title = styled.h1`
+  font-size: 2em;
 `;

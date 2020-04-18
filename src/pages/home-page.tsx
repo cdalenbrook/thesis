@@ -50,7 +50,7 @@ function HomePage() {
       <Layout>
         <Title>Teach Yuki to See</Title>
         <Subtitle>A machine learning lesson for 11-14 year olds</Subtitle>
-        <Button>LET'S GO!</Button>
+        <Button onClick={() => history.push("/introduction")}>LET'S GO!</Button>
       </Layout>
     </>
   );

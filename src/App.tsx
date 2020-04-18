@@ -1,7 +1,16 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { About, Introduction, HomePage } from "./pages";
+import {
+  About,
+  Introduction,
+  HomePage,
+  Lesson,
+  Quiz,
+  GetStarted,
+  InsertCategories,
+  AddToy,
+} from "./pages";
 
 const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -68,11 +77,26 @@ export default function App() {
             <Route path="/about">
               <About />
             </Route>
-            <Route path="/">
-              <HomePage />
-            </Route>
             <Route path="/introduction">
               <Introduction />
+            </Route>
+            <Route path="/lesson">
+              <Lesson />
+            </Route>
+            <Route path="/quiz">
+              <Quiz />
+            </Route>
+            <Route path="/get-started">
+              <GetStarted />
+            </Route>
+            <Route path="/insert-categories">
+              <InsertCategories />
+            </Route>
+            <Route path="/add-toy">
+              <AddToy />
+            </Route>
+            <Route path="/">
+              <HomePage />
             </Route>
           </Switch>
         </div>
