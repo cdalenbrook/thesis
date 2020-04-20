@@ -6,9 +6,10 @@ const NavBar = styled.nav`
   width: 100vw;
   height: 10vh;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  padding-left: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
 `;
 
 const Logo = styled.img`

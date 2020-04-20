@@ -25,7 +25,8 @@ export const Layout = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 80%;
+  justify-content: center;
+  width: 100%;
 `;
 
 export const Title = styled.h1`

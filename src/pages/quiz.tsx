@@ -2,6 +2,8 @@ import React from "react";
 import withNavBar from "../components/page-wrappers/withNavBar";
 import { Layout, Button, Title } from "../styles";
 import styled from "styled-components";
+import { QuizQuestions } from "./quiz-questions";
+import Quiz from "react-quiz-component";
 
 const QuizDiv = styled.div`
   display: flex;
@@ -27,14 +29,14 @@ const Question = styled.h1`
   font-size: 1em;
 `;
 
-function Quiz() {
+function QuizPage() {
   return (
     <>
       <Layout>
         <Title>Quiz</Title>
         <QuizDiv>
           <Progress></Progress>
-          <Question>This is the question</Question>
+          <Quiz quiz={QuizQuestions} shuffle={true} />
         </QuizDiv>
         <Button>Next</Button>
       </Layout>
@@ -42,4 +44,4 @@ function Quiz() {
   );
 }
 
-export default withNavBar(Quiz);
+export default withNavBar(QuizPage);

@@ -44,7 +44,7 @@ function HomePage() {
   return (
     <>
       <NavBar>
-        <Logo src={icon} />
+        <Logo onClick={() => history.push("/")} src={icon} />
         <Teachers onClick={() => history.push("/about")}>for teachers</Teachers>
       </NavBar>
       <Layout>
