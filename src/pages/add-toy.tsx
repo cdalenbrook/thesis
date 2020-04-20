@@ -9,9 +9,21 @@ const Table = styled.div`
   margin: 20px;
 `;
 
-const ButtonDiv = styled.div`
+const ButtonLeft = styled.div`
   display: flex;
   justify-content: flex-start;
+  width: 100%;
+`;
+
+const ButtonDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
+
+const ButtonLayout = styled.div`
+  display: flex;
+  justify-content: space-between;
   width: 100%;
 `;
 
@@ -21,10 +33,15 @@ function AddToy() {
       <Layout>
         <Title>Add Toy X to the Table?</Title>
         <Table>The table will be here</Table>
-        <ButtonDiv>
-          <Button>Back</Button>
-          <Button>Add!</Button>
-        </ButtonDiv>
+        <ButtonLayout>
+          <ButtonLeft>
+            <Button>Back</Button>
+          </ButtonLeft>
+          <ButtonDiv>
+            <Button>Add!</Button>
+          </ButtonDiv>
+          <ButtonDiv></ButtonDiv>
+        </ButtonLayout>
       </Layout>
     </>
   );

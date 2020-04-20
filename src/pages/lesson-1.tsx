@@ -31,11 +31,11 @@ const Text = styled.div`
   margin: 20px;
 `;
 
-function Lesson() {
+function Lesson1() {
   return (
     <>
       <Layout>
-        <Title>Title</Title>
+        <Title>Lesson 1</Title>
         <Info>
           <Heading>Subtitle</Heading>
           <Text>Info</Text>
@@ -45,4 +45,4 @@ function Lesson() {
   );
 }
 
-export default withNavBar(withBackNext(Lesson));
+export default withNavBar(withBackNext(Lesson1));

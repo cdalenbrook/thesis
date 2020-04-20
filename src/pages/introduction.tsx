@@ -3,7 +3,7 @@ import styled from "styled-components";
 import withNavBar from "../components/page-wrappers/withNavBar";
 import ReactPlayer from "react-player";
 import { Button, Layout } from "../styles";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Title = styled.h1`
   font-size: 3em;
@@ -14,6 +14,7 @@ const Video = styled.div`
 `;
 
 function Introduction() {
+  const history = useHistory();
   return (
     <>
       <Layout>
@@ -21,9 +22,7 @@ function Introduction() {
         <Video>
           <ReactPlayer url="https://www.youtube.com/watch?v=ug50zmP9I7s" />
         </Video>
-        <Link to="/lesson">
-          <Button> Help Yuki! </Button>
-        </Link>
+        <Button onClick={() => history.push("/lesson/1")}> Help Yuki! </Button>
       </Layout>
     </>
   );

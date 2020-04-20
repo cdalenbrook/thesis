@@ -5,11 +5,22 @@ import {
   About,
   Introduction,
   HomePage,
-  Lesson,
+  Lesson1,
+  Lesson2,
+  Lesson3,
   Quiz,
   GetStarted,
   InsertCategories,
   AddToy,
+  GenerateModel1,
+  GenerateModel2,
+  TrainModel,
+  Training,
+  DecisionTree,
+  TestTree,
+  Webcam2,
+  Evaluation,
+  Conclusion,
 } from "./pages";
 
 const GlobalStyle = createGlobalStyle`
@@ -43,6 +54,8 @@ const GlobalStyle = createGlobalStyle`
     background-color: #408af1;
     color: white;
     font-family: Futura; 
+    overflow-x: hidden;
+    margin: 10px;
   }
   ol, ul {
     list-style: none;
@@ -80,8 +93,14 @@ export default function App() {
             <Route path="/introduction">
               <Introduction />
             </Route>
-            <Route path="/lesson">
-              <Lesson />
+            <Route path="/lesson/1">
+              <Lesson1 />
+            </Route>
+            <Route path="/lesson/2">
+              <Lesson2 />
+            </Route>
+            <Route path="/lesson/3">
+              <Lesson3 />
             </Route>
             <Route path="/quiz">
               <Quiz />
@@ -94,6 +113,33 @@ export default function App() {
             </Route>
             <Route path="/add-toy">
               <AddToy />
+            </Route>
+            <Route path="/generate-model/1">
+              <GenerateModel1 />
+            </Route>
+            <Route path="/generate-model/2">
+              <GenerateModel2 />
+            </Route>
+            <Route path="/train-model/1">
+              <TrainModel />
+            </Route>
+            <Route path="/train-model/2">
+              <Training />
+            </Route>
+            <Route path="/decision-tree">
+              <DecisionTree />
+            </Route>
+            <Route path="/test-tree">
+              <TestTree />
+            </Route>
+            <Route path="/webcam-2">
+              <Webcam2 />
+            </Route>
+            <Route path="/evaluation">
+              <Evaluation />
+            </Route>
+            <Route path="/conclusion">
+              <Conclusion />
             </Route>
             <Route path="/">
               <HomePage />

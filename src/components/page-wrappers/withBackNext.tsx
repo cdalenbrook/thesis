@@ -33,12 +33,10 @@ export default (WrappedComponent: React.ComponentType<any>) => {
           <Section>
             <ButtonDiv>
               <Button height="120%" onClick={() => alert("Back")}>
-                {" "}
-                Back{" "}
+                Back
               </Button>
               <Button height="120%" onClick={() => alert("Next")}>
-                {" "}
-                Next{" "}
+                Next
               </Button>
             </ButtonDiv>
           </Section>
