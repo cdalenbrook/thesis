@@ -1,15 +1,14 @@
 import React from "react";
-import withNavBar from "../components/page-wrappers/withNavBar";
 import styled from "styled-components";
 import { Layout, Title, Button } from "../styles";
 import { useHistory } from "react-router-dom";
+import Header from "../components/header";
 
 const ExplanationDiv = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 100%;
-  height: 80%;
+  width: 80%;
   background-color: var(--div1Blue);
   border-radius: 8px;
   margin: 10px;
@@ -25,6 +24,7 @@ function TrainModel() {
   return (
     <>
       <Layout>
+        <Header />
         <Title>Let's Train the Model!</Title>
         <ExplanationDiv>
           Explanation on how the next page will work
@@ -35,4 +35,4 @@ function TrainModel() {
   );
 }
 
-export default withNavBar(TrainModel);
+export default TrainModel;

@@ -1,21 +1,15 @@
 import React from "react";
 import QR from "../qr-reader";
 import styled from "styled-components";
-import withNavBar from "../components/page-wrappers/withNavBar";
-import withBackHelpNext from "../components/page-wrappers/withBackHelpNext";
-import { Button } from "../styles";
-
-const Layout = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
+import { Button, Layout } from "../styles";
+import Header from "../components/header";
+import BackHelpNext from "../components/back-help-next";
+import { Routes } from "../router";
 
 const Section = styled.div`
-  width: 100vw;
-  height: 100%;
+  width: 80vw;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   margin: 20px;
 `;
 
@@ -38,11 +32,11 @@ const YukiRecognizes = styled.div`
   height: 50%;
   width: 80%;
   float: left;
-  overflow: scroll;
-  overflow-x: hidden;
   -webkit-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   -moz-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
+  overflow: scroll;
+  overflow-x: hidden;
 `;
 
 const ButtonDiv = styled.div`
@@ -76,6 +70,7 @@ function Webcam2() {
   return (
     <>
       <Layout>
+        <Header />
         <Section>
           <QR />
           <InfoDiv>
@@ -97,9 +92,14 @@ function Webcam2() {
             </ButtonDiv>
           </InfoDiv>
         </Section>
+        <BackHelpNext
+          previousRoute={Routes.testTree}
+          helpRoute={Routes.home}
+          nextRoute={Routes.evaluation}
+        />
       </Layout>
     </>
   );
 }
 
-export default withNavBar(withBackHelpNext(Webcam2));
+export default Webcam2;

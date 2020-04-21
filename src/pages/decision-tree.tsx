@@ -1,13 +1,14 @@
 import React from "react";
-import withNavBar from "../components/page-wrappers/withNavBar";
-import withBackHelpNext from "../components/page-wrappers/withBackHelpNext";
 import styled from "styled-components";
 import { Layout, Title } from "../styles";
+import Header from "../components/header";
+import BackHelpNext from "../components/back-help-next";
+import { Routes } from "../router";
 
 const HorizontalLayout = styled.div`
   display: flex;
   justify-content: space-evenly;
-  width: 100%;
+  width: 80%;
 `;
 
 const CodeDiv = styled.div`
@@ -46,14 +47,20 @@ function DecisionTree() {
   return (
     <>
       <Layout>
+        <Header />
         <Title>Our Decision Tree</Title>
         <HorizontalLayout>
           <CodeDiv>Tree Div</CodeDiv>
           <ExplanationDiv>Explanation Div</ExplanationDiv>
         </HorizontalLayout>
+        <BackHelpNext
+          previousRoute={Routes.training}
+          helpRoute={Routes.home}
+          nextRoute={Routes.testTree}
+        />
       </Layout>
     </>
   );
 }
 
-export default withNavBar(withBackHelpNext(DecisionTree));
+export default DecisionTree;

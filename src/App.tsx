@@ -21,7 +21,9 @@ import {
   Webcam2,
   Evaluation,
   Conclusion,
+  Webcam1,
 } from "./pages";
+import { Routes } from "./router";
 
 const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -54,7 +56,6 @@ const GlobalStyle = createGlobalStyle`
     background-color: #408af1;
     color: white;
     font-family: Futura; 
-    overflow-x: hidden;
     margin: 10px;
   }
   ol, ul {
@@ -87,61 +88,64 @@ export default function App() {
       <Router>
         <div>
           <Switch>
-            <Route path="/about">
+            <Route path={Routes.about}>
               <About />
             </Route>
-            <Route path="/introduction">
+            <Route path={Routes.introduction}>
               <Introduction />
             </Route>
-            <Route path="/lesson/1">
+            <Route path={Routes.lesson1}>
               <Lesson1 />
             </Route>
-            <Route path="/lesson/2">
+            <Route path={Routes.lesson2}>
               <Lesson2 />
             </Route>
-            <Route path="/lesson/3">
+            <Route path={Routes.lesson3}>
               <Lesson3 />
             </Route>
-            <Route path="/quiz">
+            <Route path={Routes.quiz}>
               <Quiz />
             </Route>
-            <Route path="/get-started">
+            <Route path={Routes.getStarted}>
               <GetStarted />
             </Route>
-            <Route path="/insert-categories">
+            <Route path={Routes.insertCategories}>
               <InsertCategories />
             </Route>
-            <Route path="/add-toy">
+            <Route path={Routes.webcam1}>
+              <Webcam1 />
+            </Route>
+            <Route path={Routes.addToy}>
               <AddToy />
             </Route>
-            <Route path="/generate-model/1">
+            <Route path={Routes.generateModel1}>
               <GenerateModel1 />
             </Route>
-            <Route path="/generate-model/2">
+            <Route path={Routes.generateModel2}>
               <GenerateModel2 />
             </Route>
-            <Route path="/train-model/1">
+            <Route path={Routes.trainModel}>
               <TrainModel />
             </Route>
-            <Route path="/train-model/2">
+            <Route path={Routes.training}>
               <Training />
             </Route>
-            <Route path="/decision-tree">
+            <Route path={Routes.decisionTree}>
               <DecisionTree />
             </Route>
-            <Route path="/test-tree">
+            <Route path={Routes.testTree}>
               <TestTree />
             </Route>
-            <Route path="/webcam-2">
+            <Route path={Routes.webcam2}>
               <Webcam2 />
             </Route>
-            <Route path="/evaluation">
+            <Route path={Routes.evaluation}>
               <Evaluation />
             </Route>
-            <Route path="/conclusion">
+            <Route path={Routes.conclusion}>
               <Conclusion />
             </Route>
-            <Route path="/">
+            <Route path={Routes.home}>
               <HomePage />
             </Route>
           </Switch>

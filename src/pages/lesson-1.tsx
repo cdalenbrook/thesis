@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import withNavBar from "../components/page-wrappers/withNavBar";
-import withBackNext from "../components/page-wrappers/withBackNext";
 import { Layout, Title } from "../styles";
+import Header from "../components/header";
+import { BackNextRow } from "../components/back-next";
 
 const Heading = styled.h1`
   font-size: 1.5em;
@@ -14,8 +14,7 @@ const Info = styled.div`
   display: flex;
   flex-direction: column;
   background-color: var(--div1Blue);
-  height: 80%;
-  width: 100%;
+  width: 90%;
   border-radius: 8px;
   padding: 10px;
   margin: 20px;
@@ -35,14 +34,16 @@ function Lesson1() {
   return (
     <>
       <Layout>
+        <Header />
         <Title>Lesson 1</Title>
         <Info>
           <Heading>Subtitle</Heading>
           <Text>Info</Text>
         </Info>
+        <BackNextRow nextRoute="/lesson/2" previousRoute="/introduction" />
       </Layout>
     </>
   );
 }
 
-export default withNavBar(withBackNext(Lesson1));
+export default Lesson1;

@@ -1,21 +1,15 @@
 import React from "react";
 import QR from "../qr-reader";
 import styled from "styled-components";
-import withNavBar from "../components/page-wrappers/withNavBar";
-import withBackHelpNext from "../components/page-wrappers/withBackHelpNext";
-import { Button } from "../styles";
-
-const Layout = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
+import { Layout, Button } from "../styles";
+import Header from "../components/header";
+import BackHelpNext from "../components/back-help-next";
+import { Routes } from "../router";
 
 const Section = styled.div`
-  width: 100vw;
-  height: 100%;
+  width: 80vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin: 20px;
 `;
 
@@ -41,6 +35,8 @@ const YukiRecognizes = styled.div`
   -webkit-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   -moz-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
+  overflow: scroll;
+  overflow-x: hidden;
 `;
 
 const ButtonDiv = styled.div`
@@ -69,6 +65,7 @@ function Webcam1() {
   return (
     <>
       <Layout>
+        <Header />
         <Section>
           <QR />
           <InfoDiv>
@@ -84,14 +81,19 @@ function Webcam1() {
             </YukiRecognizes>
             <Title> This toy belongs to: </Title>
             <ButtonDiv>
-              <Button onClick={() => alert("hi")}> Category 1 </Button>
-              <Button onClick={() => alert("hi2")}> Category 2 </Button>
+              <Button onClick={() => alert("category 1")}> Category 1 </Button>
+              <Button onClick={() => alert("category 2")}> Category 2 </Button>
             </ButtonDiv>
           </InfoDiv>
         </Section>
+        <BackHelpNext
+          previousRoute={Routes.insertCategories}
+          helpRoute={Routes.home}
+          nextRoute={Routes.generateModel1}
+        />
       </Layout>
     </>
   );
 }
 
-export default withNavBar(withBackHelpNext(Webcam1));
+export default Webcam1;

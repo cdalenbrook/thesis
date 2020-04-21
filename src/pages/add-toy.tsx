@@ -1,12 +1,16 @@
 import React from "react";
-import withNavBar from "../components/page-wrappers/withNavBar";
 import styled from "styled-components";
 import { Layout, Title, Button } from "../styles";
+import Header from "../components/header";
 
 const Table = styled.div`
   background-color: var(--div1Blue);
+  margin-bottom: 10px;
   padding: 10px;
-  margin: 20px;
+  border-radius: 8px;
+  -webkit-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
+  -moz-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
+  box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
 `;
 
 const ButtonLeft = styled.div`
@@ -27,24 +31,33 @@ const ButtonLayout = styled.div`
   width: 100%;
 `;
 
+const Section = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+`;
+
 function AddToy() {
   return (
     <>
       <Layout>
+        <Header />
         <Title>Add Toy X to the Table?</Title>
-        <Table>The table will be here</Table>
-        <ButtonLayout>
-          <ButtonLeft>
-            <Button>Back</Button>
-          </ButtonLeft>
-          <ButtonDiv>
-            <Button>Add!</Button>
-          </ButtonDiv>
-          <ButtonDiv></ButtonDiv>
-        </ButtonLayout>
+        <Section>
+          <Table>The table will be here</Table>
+          <ButtonLayout>
+            <ButtonLeft>
+              <Button>Back</Button>
+            </ButtonLeft>
+            <ButtonDiv>
+              <Button>Add!</Button>
+            </ButtonDiv>
+            <ButtonDiv></ButtonDiv>
+          </ButtonLayout>
+        </Section>
       </Layout>
     </>
   );
 }
 
-export default withNavBar(AddToy);
+export default AddToy;

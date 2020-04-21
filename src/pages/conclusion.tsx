@@ -1,15 +1,14 @@
 import React from "react";
-import withNavBar from "../components/page-wrappers/withNavBar";
 import styled from "styled-components";
 import { Layout, Title, Button } from "../styles";
 import { useHistory } from "react-router-dom";
+import Header from "../components/header";
 
 const ExplanationDiv = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 100%;
-  height: 80%;
+  width: 80%;
   background-color: var(--div1Blue);
   border-radius: 8px;
   margin: 10px;
@@ -31,6 +30,7 @@ function Conclusion() {
   return (
     <>
       <Layout>
+        <Header />
         <Title>How did Yuki Do?</Title>
         <ExplanationDiv>
           What we learned, What we could do in the future, Other ML techniques
@@ -49,4 +49,4 @@ function Conclusion() {
   );
 }
 
-export default withNavBar(Conclusion);
+export default Conclusion;

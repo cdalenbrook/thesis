@@ -1,6 +1,6 @@
 import React from "react";
-import withNavBar from "../components/page-wrappers/withNavBar";
 import styled from "styled-components";
+import Header from "../components/header";
 
 const Layout = styled.div`
   display: flex;
@@ -30,6 +30,7 @@ function About() {
   return (
     <>
       <Layout>
+        <Header />
         <Title> About the Lesson </Title>
         <InfoDiv> test </InfoDiv>
         <InfoDiv> </InfoDiv>
@@ -40,4 +41,4 @@ function About() {
   );
 }
 
-export default withNavBar(About);
+export default About;

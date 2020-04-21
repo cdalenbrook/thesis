@@ -1,16 +1,19 @@
 import React from "react";
-import withNavBar from "../components/page-wrappers/withNavBar";
 import { Layout, Button, Title } from "../styles";
 import styled from "styled-components";
 import { QuizQuestions } from "./quiz-questions";
 import Quiz from "react-quiz-component";
+import Header from "../components/header";
+import { useHistory } from "react-router-dom";
+import { useToggle } from "@umijs/hooks";
+import { Routes } from "../router";
 
 const QuizDiv = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
-  width: 100%;
-  height: 80%;
+  width: 80%;
   background-color: var(--div1Blue);
   border-radius: 8px;
   margin: 10px;
@@ -25,23 +28,30 @@ const Progress = styled.div`
   width: 100%;
 `;
 
-const Question = styled.h1`
-  font-size: 1em;
-`;
-
 function QuizPage() {
+  const router = useHistory();
+  const { state, toggle } = useToggle(false);
+
   return (
     <>
       <Layout>
+        <Header />
         <Title>Quiz</Title>
         <QuizDiv>
           <Progress></Progress>
-          <Quiz quiz={QuizQuestions} shuffle={true} />
+          <Quiz
+            quiz={QuizQuestions}
+            shuffle={true}
+            onComplete={() => toggle()}
+            continueTillCorrect={true}
+          />
         </QuizDiv>
-        <Button>Next</Button>
+        {state && (
+          <Button onClick={() => router.push(Routes.getStarted)}>Done</Button>
+        )}
       </Layout>
     </>
   );
 }
 
-export default withNavBar(QuizPage);
+export default QuizPage;

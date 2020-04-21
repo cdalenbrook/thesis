@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import withNavBar from "../components/page-wrappers/withNavBar";
 import ReactPlayer from "react-player";
 import { Button, Layout } from "../styles";
 import { useHistory } from "react-router-dom";
+import Header from "../components/header";
 
 const Title = styled.h1`
   font-size: 3em;
@@ -17,6 +17,7 @@ function Introduction() {
   const history = useHistory();
   return (
     <>
+      <Header />
       <Layout>
         <Title>Introduction</Title>
         <Video>
@@ -28,4 +29,4 @@ function Introduction() {
   );
 }
 
-export default withNavBar(Introduction);
+export default Introduction;
