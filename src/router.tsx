@@ -7,7 +7,7 @@ enum Routes {
   lesson3 = "/lesson/3",
   quiz = "/quiz",
   getStarted = "/get-started",
-  insertCategories = "/insert-catgories",
+  insertCategories = "/insert-categories",
   webcam1 = "/webcam-1",
   webcam2 = "/webcam-2",
   addToy = "/add-toy",
