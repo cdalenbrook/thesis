@@ -32,7 +32,7 @@ function InsertCategories() {
         <BackHelpNext
           previousRoute={Routes.getStarted}
           helpRoute={Routes.home}
-          nextRoute={Routes.webcam2}
+          nextRoute={Routes.webcam1}
         />
       </Layout>
     </>
