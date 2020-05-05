@@ -22,6 +22,7 @@ import {
   Evaluation,
   Conclusion,
   Webcam1,
+  DevArea,
 } from "./pages";
 import { Routes } from "./router";
 
@@ -144,6 +145,9 @@ export default function App() {
             </Route>
             <Route path={Routes.conclusion}>
               <Conclusion />
+            </Route>
+            <Route path={Routes.dev}>
+              <DevArea />
             </Route>
             <Route path={Routes.home}>
               <HomePage />

@@ -16,6 +16,7 @@ const NavBar = styled.nav`
 const Logo = styled.img`
   height: 80%;
   width: auto;
+  cursor: pointer;
 `;
 
 const Teachers = styled.h1`

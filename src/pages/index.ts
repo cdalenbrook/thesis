@@ -18,3 +18,4 @@ export { default as TestTree } from "./test-tree";
 export { default as Webcam2 } from "./webcam-2";
 export { default as Evaluation } from "./evaluation";
 export { default as Conclusion } from "./conclusion";
+export { default as DevArea } from "./dev";

@@ -19,6 +19,7 @@ enum Routes {
   testTree = "/test-tree",
   evaluation = "/evaluation",
   conclusion = "/conclusion",
+  dev = "/dev-area",
 }
 
 export { Routes };
