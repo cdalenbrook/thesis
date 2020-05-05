@@ -13,7 +13,7 @@ function DevArea() {
   });
 
   React.useEffect(() => {
-    console.log("hello world");
+    console.log("hello charlie i love you");
 
     return () => {
       alert("hello");
