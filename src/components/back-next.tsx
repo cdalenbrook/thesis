@@ -28,13 +28,7 @@ function BackNextRow({ nextRoute, previousRoute }: IProps) {
   return (
     <Layout>
       <ButtonDiv>
-        <Button
-          height="120%"
-          onClick={() => {
-            if (router.length > 0) router.goBack();
-            else router.push(previousRoute);
-          }}
-        >
+        <Button height="120%" onClick={() => router.push(previousRoute)}>
           Back
         </Button>
         <Button height="120%" onClick={() => router.push(nextRoute)}>

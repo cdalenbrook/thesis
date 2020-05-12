@@ -1,10 +1,11 @@
 import React from "react";
-import QR from "../qr-reader";
+import QrReader from "react-qr-reader";
 import styled from "styled-components";
 import { Button, Layout } from "../styles";
 import Header from "../components/header";
 import BackHelpNext from "../components/back-help-next";
 import { Routes } from "../router";
+import { toys, Toy } from "../data/toys";
 
 const Section = styled.div`
   width: 80vw;
@@ -29,14 +30,12 @@ const InfoDiv = styled.div`
 const YukiRecognizes = styled.div`
   background-color: #88cbfa;
   border-radius: 8px;
-  height: 50%;
+  height: 60%;
   width: 80%;
   float: left;
   -webkit-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   -moz-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
-  overflow: scroll;
-  overflow-x: hidden;
 `;
 
 const ButtonDiv = styled.div`
@@ -67,21 +66,36 @@ const Prediction = styled.h1`
 `;
 
 function Webcam2() {
+  const [toy, setToy] = React.useState<Toy>();
+
+  const handleError = (err: any) => {
+    console.error(err);
+  };
+
+  const handleScan = (data: string | null) => {
+    if (!data) return;
+    setToy(toys[data]);
+  };
+
   return (
     <>
       <Layout>
         <Header />
         <Section>
-          <QR />
+          <QrReader
+            delay={300}
+            onError={handleError}
+            onScan={handleScan}
+            style={{ width: "40%" }}
+          />
           <InfoDiv>
             <YukiRecognizes>
-              <Title> Yuki Recognizes: </Title>
+              <Title> Yuki Recognizes: {toy?.name} </Title>
               <List>
-                <ListItem>Property 1</ListItem>
-                <ListItem>Property 2</ListItem>
-                <ListItem>Property 3</ListItem>
-                <ListItem>Property 4</ListItem>
-                <ListItem>Property 5</ListItem>
+                <ListItem>Wheels: {toy?.wheels.toString()} </ListItem>
+                <ListItem>Main Colour: {toy?.mainColor} </ListItem>
+                <ListItem>Size: {toy?.size} </ListItem>
+                <ListItem>Fluffy: {toy?.fluffy.toString()} </ListItem>
               </List>
               <Prediction>Yuki Predicts: _____</Prediction>
             </YukiRecognizes>

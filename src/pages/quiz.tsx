@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout, Button, Title } from "../styles";
 import styled from "styled-components";
-import { QuizQuestions } from "./quiz-questions";
+import { QuizQuestions } from "../data/quiz-questions";
 import Quiz from "react-quiz-component";
 import Header from "../components/header";
 import { useHistory } from "react-router-dom";
@@ -10,24 +10,18 @@ import { Routes } from "../router";
 
 const QuizDiv = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 80%;
-  height: 70vh;
+  height: 60vh;
   background-color: var(--div1Blue);
   border-radius: 8px;
   overflow-y: scroll;
-  margin: 10px;
+  margin: 20px;
   padding: 20px;
   -webkit-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   -moz-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
-`;
-
-const Progress = styled.div`
-  border-radius: 20px;
-  width: 100%;
 `;
 
 function QuizPage() {
@@ -40,12 +34,10 @@ function QuizPage() {
         <Header />
         <Title>Quiz</Title>
         <QuizDiv>
-          <Progress></Progress>
           <Quiz
             quiz={QuizQuestions}
             shuffle={true}
             onComplete={() => toggle()}
-            continueTillCorrect={true}
           />
         </QuizDiv>
         {state && (

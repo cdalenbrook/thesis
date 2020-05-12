@@ -1,10 +1,12 @@
 import React from "react";
-import QR from "../qr-reader";
+import QrReader from "react-qr-reader";
 import styled from "styled-components";
 import { Layout, Button } from "../styles";
 import Header from "../components/header";
-import BackHelpNext from "../components/back-help-next";
 import { Routes } from "../router";
+import { toys, Toy } from "../data/toys";
+import { useHistory } from "react-router-dom";
+import { useCounter } from "@umijs/hooks";
 
 const Section = styled.div`
   width: 80vw;
@@ -48,7 +50,7 @@ const ButtonDiv = styled.div`
 const Title = styled.h1`
   font-size: 2em;
   text-align: center;
-  padding: 10px;
+  padding-top: 10px;
 `;
 
 const List = styled.ul`
@@ -61,36 +63,113 @@ const ListItem = styled.li`
   margin: 2%;
 `;
 
-function Webcam1() {
+const Button2 = styled.button`
+  background-color: var(--buttonBlue);
+  color: white;
+  border-radius: 25px;
+  width: 30%;
+  font-family: Futura;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
+  -moz-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
+  box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
+  font-size: 1.5em;
+  cursor: pointer;
+  border: none;
+`;
+
+const kNumToys = 1;
+
+function Webcam1(props: any) {
+  const [state, setState] = React.useState<Toy[]>([]);
+  const [toy, setToy] = React.useState<Toy>();
+  const [current, { inc }] = useCounter(0, { min: 0, max: kNumToys });
+
+  const setCategory = (category: boolean) => {
+    if (!toy) return;
+    inc();
+    setState([
+      {
+        category,
+        ...toy,
+      },
+      ...state,
+    ]);
+  };
+
+  const handleScan = (data: string | null) => {
+    if (!data) return;
+    setToy(toys[data]);
+  };
+  const handleError = (err: any) => {
+    console.error(err);
+  };
+
+  const handleNext = () => {
+    if (current !== kNumToys) {
+      //handle not all toys were given
+      alert(`You've only given me ${current}/${kNumToys} toys.\n\nKeep going!`);
+    } else {
+      //go to next page
+      router.push(nextRoute);
+    }
+  };
+
+  const router = useHistory();
+  const previousRoute = Routes.insertCategories;
+  const helpRoute = Routes.home;
+  const nextRoute = Routes.generateModel1;
+
   return (
     <>
       <Layout>
         <Header />
         <Section>
-          <QR />
+          <QrReader
+            delay={300}
+            onError={handleError}
+            onScan={handleScan}
+            style={{ width: "40%" }}
+          />
           <InfoDiv>
             <YukiRecognizes>
-              <Title> Yuki Recognizes: </Title>
+              <Title> Yuki Recognizes: {toy?.name}</Title>
               <List>
-                <ListItem>Property 1</ListItem>
-                <ListItem>Property 2</ListItem>
-                <ListItem>Property 3</ListItem>
-                <ListItem>Property 4</ListItem>
-                <ListItem>Property 5</ListItem>
+                <ListItem>Wheels: {toy?.wheels.toString()} </ListItem>
+                <ListItem>Main Colour: {toy?.mainColor} </ListItem>
+                <ListItem>Size: {toy?.size} </ListItem>
+                <ListItem>Fluffy: {toy?.fluffy.toString()} </ListItem>
               </List>
             </YukiRecognizes>
             <Title> This toy belongs to: </Title>
             <ButtonDiv>
-              <Button onClick={() => alert("category 1")}> Category 1 </Button>
-              <Button onClick={() => alert("category 2")}> Category 2 </Button>
+              <Button onClick={() => setCategory(true)}>
+                {props.category1}
+              </Button>
+              <Button onClick={() => setCategory(false)}>
+                {props.category2}
+              </Button>
             </ButtonDiv>
           </InfoDiv>
         </Section>
-        <BackHelpNext
-          previousRoute={Routes.insertCategories}
-          helpRoute={Routes.home}
-          nextRoute={Routes.generateModel1}
-        />
+
+        <ButtonDiv>
+          <Button
+            height="120%"
+            onClick={() => {
+              if (router.length > 0) router.goBack();
+              else router.push(previousRoute);
+            }}
+          >
+            Back
+          </Button>
+          <Button height="120%" onClick={() => router.push(helpRoute)}>
+            Help
+          </Button>
+          <Button2 onClick={handleNext}>Next</Button2>
+        </ButtonDiv>
       </Layout>
     </>
   );
