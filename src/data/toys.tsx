@@ -4,11 +4,14 @@ export interface Toy {
   mainColor: string;
   size: "small" | "medium" | "big";
   fluffy: boolean;
-  category?: boolean;
 }
 
 interface AllToys {
   [key: string]: Toy;
+}
+
+export interface ToysAndVals {
+  [key: string]: 0 | 1;
 }
 
 export const toys: AllToys = {

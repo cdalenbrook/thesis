@@ -4,9 +4,12 @@ import styled from "styled-components";
 import { Layout, Button } from "../styles";
 import Header from "../components/header";
 import { Routes } from "../router";
-import { toys, Toy } from "../data/toys";
+import { toys, Toy, ToysAndVals } from "../data/toys";
 import { useHistory } from "react-router-dom";
 import { useCounter } from "@umijs/hooks";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../reducers";
+import { trainTree } from "../actions";
 
 const Section = styled.div`
   width: 80vw;
@@ -83,25 +86,28 @@ const Button2 = styled.button`
 const kNumToys = 1;
 
 function Webcam1(props: any) {
-  const [state, setState] = React.useState<Toy[]>([]);
+  const router = useHistory();
+  const { categories } = useSelector((state: RootState) => state.categories);
+  const dispatch = useDispatch();
+
+  const [state, setState] = React.useState<ToysAndVals>({});
   const [toy, setToy] = React.useState<Toy>();
+  const [currentID, setCurrentID] = React.useState<string>("");
   const [current, { inc }] = useCounter(0, { min: 0, max: kNumToys });
 
   const setCategory = (category: boolean) => {
     if (!toy) return;
     inc();
-    setState([
-      {
-        category,
-        ...toy,
-      },
+    setState({
       ...state,
-    ]);
+      [currentID]: category ? 1 : 0,
+    });
   };
 
   const handleScan = (data: string | null) => {
     if (!data) return;
     setToy(toys[data]);
+    setCurrentID(data);
   };
   const handleError = (err: any) => {
     console.error(err);
@@ -113,11 +119,11 @@ function Webcam1(props: any) {
       alert(`You've only given me ${current}/${kNumToys} toys.\n\nKeep going!`);
     } else {
       //go to next page
-      router.push(nextRoute);
+      dispatch(trainTree(categories, state));
+      //router.push(nextRoute);
     }
   };
 
-  const router = useHistory();
   const previousRoute = Routes.insertCategories;
   const helpRoute = Routes.home;
   const nextRoute = Routes.generateModel1;
@@ -146,10 +152,10 @@ function Webcam1(props: any) {
             <Title> This toy belongs to: </Title>
             <ButtonDiv>
               <Button onClick={() => setCategory(true)}>
-                {props.category1}
+                {categories.category1}
               </Button>
               <Button onClick={() => setCategory(false)}>
-                {props.category2}
+                {categories.category2}
               </Button>
             </ButtonDiv>
           </InfoDiv>
