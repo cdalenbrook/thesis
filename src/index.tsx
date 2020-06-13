@@ -5,11 +5,11 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import App from "./App";
 import theme from "./theme";
 import { BrowserRouter as Router } from "react-router-dom";
-import { createStore, applyMiddleware, Action } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import rootReducer from "./reducers";
 import { Provider } from "react-redux";
-import promise from "redux-promise";
-import { logger } from "redux-logger";
+import promise from "redux-promise-middleware";
+import logger from "redux-logger";
 import thunk from "redux-thunk";
 
 const middleware = applyMiddleware(promise, thunk, logger);

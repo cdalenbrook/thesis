@@ -6,6 +6,9 @@ import Header from "../components/header";
 import BackHelpNext from "../components/back-help-next";
 import { Routes } from "../router";
 import { toys, Toy } from "../data/toys";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../reducers";
+import { predictItem } from "../actions";
 
 const Section = styled.div`
   width: 80vw;
@@ -67,14 +70,20 @@ const Prediction = styled.h1`
 
 function Webcam2() {
   const [toy, setToy] = React.useState<Toy>();
+  const [currentData, setCurrentData] = React.useState<string>();
+  const { categories } = useSelector((state: RootState) => state.categories);
+  const tree = useSelector((state: RootState) => state.tree);
+  const dispatch = useDispatch();
 
   const handleError = (err: any) => {
     console.error(err);
   };
 
-  const handleScan = (data: string | null) => {
-    if (!data) return;
-    setToy(toys[data]);
+  const handleScan = (toy_id: string | null) => {
+    if (!toy_id || toy_id === currentData) return;
+    setToy(toys[toy_id]);
+    setCurrentData(toy_id);
+    dispatch(predictItem(toy_id, tree));
   };
 
   return (
@@ -101,8 +110,12 @@ function Webcam2() {
             </YukiRecognizes>
             <Title> This toy belongs to: </Title>
             <ButtonDiv>
-              <Button onClick={() => alert("category 1")}> Category 1 </Button>
-              <Button onClick={() => alert("category 2")}> Category 2 </Button>
+              <Button onClick={() => alert("category 1")}>
+                {categories.category1}
+              </Button>
+              <Button onClick={() => alert("category 2")}>
+                {categories.category2}
+              </Button>
             </ButtonDiv>
           </InfoDiv>
         </Section>

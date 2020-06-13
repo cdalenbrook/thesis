@@ -8,9 +8,10 @@ interface CategoriesState {
 }
 
 interface TreeState {
-  sending: boolean;
-  trainedTreeReceived: boolean;
-  tree: any;
+  isLoading: boolean;
+  error?: any;
+  data?: any;
+  prediction?: number[];
 }
 
 export type { ICategories, CategoriesState, TreeState };

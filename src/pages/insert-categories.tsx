@@ -2,13 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import Header from "../components/header";
 import { Layout, Button } from "../styles";
-import BackHelpNext from "../components/back-help-next";
 import { Routes } from "../router";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { ICategories } from "../types";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { nameCategories } from "../actions";
+import { useHistory } from "react-router-dom";
 
 const Text = styled.h1`
   font-size: 2.5em;
@@ -37,17 +37,33 @@ const Form = styled.form`
   width: 60%;
 `;
 
+const ButtonDiv = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+`;
+
+const ErrorDiv = styled.div`
+  height: 20px;
+  margin-bottom: 20px;
+  color: #ff6961;
+  font-weight: bold;
+`;
+
 const CategorySchema = Yup.object<ICategories>().shape({
   category1: Yup.string()
+    .min(2, `Category must be at least 2 characters long`)
     .matches(/^[a-zA-Z]+$/)
     .required("Required"),
   category2: Yup.string()
+    .min(2, `Category must be at least 2 characters long`)
     .matches(/^[a-zA-Z]+$/)
     .required("Required"),
 });
 
 function InsertCategories() {
   const dispatch = useDispatch();
+  const router = useHistory();
 
   const formik = useFormik<ICategories>({
     initialValues: {
@@ -60,11 +76,29 @@ function InsertCategories() {
     },
   });
 
+  const handleNext = (e: any) => {
+    e.preventDefault();
+    if (!formik.isValid) {
+      //handle not all toys were given
+      alert(`Please submit your categories!`);
+    } else {
+      // submit the form
+      formik.handleSubmit(e);
+      //go to next page
+      router.push(nextRoute);
+    }
+  };
+
+  const previousRoute = Routes.getStarted;
+  const helpRoute = Routes.home;
+  const nextRoute = Routes.webcam1;
+
   return (
     <>
       <Layout>
         <Header />
         <Text> Enter your chosen categories: </Text>
+
         <Form onSubmit={formik.handleSubmit}>
           <Label>Category 1:</Label>
           <Input
@@ -75,6 +109,9 @@ function InsertCategories() {
             onChange={formik.handleChange}
             value={formik.values.category1}
           />
+          <ErrorDiv>
+            <h1>{formik.touched && formik.errors.category1}</h1>
+          </ErrorDiv>
           <Label>Category 2:</Label>
           <Input
             type="text"
@@ -84,13 +121,25 @@ function InsertCategories() {
             onChange={formik.handleChange}
             value={formik.values.category2}
           />
-          <button type="submit"> Done </button>
+          <ErrorDiv>
+            <h1>{formik.touched && formik.errors.category2}</h1>
+          </ErrorDiv>
+          <ButtonDiv>
+            <Button
+              height="120%"
+              onClick={() => {
+                if (router.length > 0) router.goBack();
+                else router.push(previousRoute);
+              }}
+            >
+              Back
+            </Button>
+            <Button height="120%" onClick={() => router.push(helpRoute)}>
+              Help
+            </Button>
+            <Button onClick={handleNext}>Next</Button>
+          </ButtonDiv>
         </Form>
-        <BackHelpNext
-          previousRoute={Routes.getStarted}
-          helpRoute={Routes.home}
-          nextRoute={Routes.webcam1}
-        />
       </Layout>
     </>
   );

@@ -3,6 +3,7 @@ import { Button } from "../styles";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../components/header";
+import robot from "../images/robot.png";
 
 const Layout = styled.div`
   display: flex;
@@ -20,6 +21,16 @@ const Subtitle = styled.p`
   padding: 50px;
 `;
 
+const Image = styled.img`
+  height: 100%;
+`;
+
+const ImageDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  height: 300px;
+`;
+
 function HomePage() {
   const history = useHistory();
   return (
@@ -27,6 +38,9 @@ function HomePage() {
       <Header />
       <Layout>
         <Title>Teach Yuki to See</Title>
+        <ImageDiv>
+          <Image src={robot} alt="robot"></Image>
+        </ImageDiv>
         <Subtitle>A machine learning lesson for 11-14 year olds</Subtitle>
         <Button onClick={() => history.push("/introduction")}>LET'S GO!</Button>
       </Layout>

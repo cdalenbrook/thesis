@@ -19,8 +19,9 @@ const Logo = styled.img`
   cursor: pointer;
 `;
 
-const Teachers = styled.h1`
+const About = styled.h1`
   cursor: pointer;
+  padding-right: 2%;
 `;
 
 function Header() {
@@ -29,7 +30,7 @@ function Header() {
     <>
       <NavBar>
         <Logo onClick={() => history.push("/")} src={icon} />
-        <Teachers onClick={() => history.push("/about")}>for teachers</Teachers>
+        <About onClick={() => history.push("/about")}>about</About>
       </NavBar>
     </>
   );

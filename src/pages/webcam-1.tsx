@@ -84,8 +84,11 @@ const Button2 = styled.button`
 `;
 
 const kNumToys = 1;
+const previousRoute = Routes.insertCategories;
+const helpRoute = Routes.home;
+const nextRoute = Routes.generateModel1;
 
-function Webcam1(props: any) {
+function Webcam1() {
   const router = useHistory();
   const { categories } = useSelector((state: RootState) => state.categories);
   const dispatch = useDispatch();
@@ -120,13 +123,9 @@ function Webcam1(props: any) {
     } else {
       //go to next page
       dispatch(trainTree(categories, state));
-      //router.push(nextRoute);
+      router.push(nextRoute);
     }
   };
-
-  const previousRoute = Routes.insertCategories;
-  const helpRoute = Routes.home;
-  const nextRoute = Routes.generateModel1;
 
   return (
     <>
@@ -162,13 +161,7 @@ function Webcam1(props: any) {
         </Section>
 
         <ButtonDiv>
-          <Button
-            height="120%"
-            onClick={() => {
-              if (router.length > 0) router.goBack();
-              else router.push(previousRoute);
-            }}
-          >
+          <Button height="120%" onClick={() => router.push(previousRoute)}>
             Back
           </Button>
           <Button height="120%" onClick={() => router.push(helpRoute)}>

@@ -55,8 +55,8 @@ const itemsList = [
 ];
 
 const columnsList = {
-  [123]: { name: "Algorithm", items: [] },
-  [345]: { name: "Code Blocks", items: itemsList },
+  123: { name: "Algorithm", items: [] },
+  345: { name: "Code Blocks", items: itemsList },
 };
 
 const onDragEnd = (result: any, columns: any, setColumns: any) => {
