@@ -28,7 +28,7 @@ const Image = styled.img`
 const ImageDiv = styled.div`
   display: flex;
   justify-content: center;
-  height: 300px;
+  height: 200px;
 `;
 
 function HomePage() {

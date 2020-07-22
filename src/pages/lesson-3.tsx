@@ -34,7 +34,7 @@ function Lesson3() {
     <>
       <Layout>
         <Header />
-        <Title>Lesson 3</Title>
+        <Title>Using Decision Trees to Help Yuki See</Title>
         <Info>
           <Heading>Subtitle</Heading>
           <Text>Info</Text>

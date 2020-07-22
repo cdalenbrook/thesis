@@ -13,12 +13,13 @@ const QuizDiv = styled.div`
   align-items: center;
   flex-direction: column;
   width: 80%;
-  height: 60vh;
+  height: 450px;
   background-color: var(--div1Blue);
   border-radius: 8px;
   overflow-y: scroll;
   margin: 20px;
   padding: 20px;
+  font-size: 1.5em;
   -webkit-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   -moz-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);

@@ -35,7 +35,7 @@ function Lesson2() {
     <>
       <Layout>
         <Header />
-        <Title>Lesson 2</Title>
+        <Title>Decision Trees</Title>
         <Info>
           <Heading>Subtitle</Heading>
           <Text>Info</Text>

@@ -21,7 +21,7 @@ function Introduction() {
       <Layout>
         <Title>Introduction</Title>
         <Video>
-          <ReactPlayer url="https://www.youtube.com/watch?v=ug50zmP9I7s" />
+          <ReactPlayer url="https://youtu.be/KTeMwp6nTWE" />
         </Video>
         <Button onClick={() => history.push("/lesson/1")}> Help Yuki! </Button>
       </Layout>
