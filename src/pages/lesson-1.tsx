@@ -16,7 +16,7 @@ function Lesson1() {
         <Header />
         <Title>Machine Learning</Title>
         <Video>
-          <ReactPlayer url="https://youtu.be/_VfmMMZGdcw" />
+          <ReactPlayer url="https://www.youtube.com/watch?v=BOyKnzbvmQ4" />
         </Video>
         <BackNextRow nextRoute="/lesson/2" previousRoute="/introduction" />
       </Layout>
