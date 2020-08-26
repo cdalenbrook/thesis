@@ -30,6 +30,7 @@ const InfoDiv = styled.div`
   -webkit-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   -moz-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
+  padding: 10px;
 `;
 
 const YukiRecognizes = styled.div`

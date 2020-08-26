@@ -43,6 +43,11 @@ const ButtonDiv = styled.div`
   width: 100%;
 `;
 
+const InfoDiv = styled.div`
+  font-size: 1.25em;
+  padding-bottom: 20px;
+`;
+
 const ErrorDiv = styled.div`
   height: 20px;
   margin-bottom: 20px;
@@ -124,6 +129,13 @@ function InsertCategories() {
           <ErrorDiv>
             <h1>{formik.touched && formik.errors.category2}</h1>
           </ErrorDiv>
+          <InfoDiv>
+            On the next page show the webcam ONLY 12 of the 14 toys in the
+            group. Once the webcam has recognized a toy (shows the toy name and
+            properties) specify which of your 2 categories that toy belongs to
+            by clicking on the corresponding button and then move on to the next
+            toy.
+          </InfoDiv>
           <ButtonDiv>
             <Button
               height="120%"
