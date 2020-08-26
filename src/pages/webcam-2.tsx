@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../reducers";
 import { predictItem } from "../actions";
 import { useTypedSession } from "../hooks/useUserSession";
+import { CircularProgress } from "@material-ui/core";
 
 const Section = styled.div`
   width: 80vw;
@@ -79,6 +80,19 @@ function Webcam2() {
     dispatch(predictItem(session.id, toy_id));
   };
 
+  const showPrediction = () => {
+    if (isLoading) {
+      return <CircularProgress />;
+    }
+    if (!prediction || !prediction.length) {
+      return "______";
+    } else if (prediction[0] === 0) {
+      return categories.category2;
+    } else {
+      return categories.category1;
+    }
+  };
+
   return (
     <>
       <Layout>
@@ -100,14 +114,7 @@ function Webcam2() {
                 <ListItem>Fluffy: {toy?.fluffy.toString()} </ListItem>
               </List>
             </ListDiv>
-            <Prediction>
-              Yuki Predicts:{" "}
-              {isLoading || !prediction
-                ? "______"
-                : prediction[0] === 0
-                ? categories.category2
-                : categories.category1}
-            </Prediction>
+            <Prediction>Yuki Predicts: {showPrediction()}</Prediction>
           </InfoDiv>
         </Section>
         <BackHelpNext

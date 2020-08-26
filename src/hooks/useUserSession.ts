@@ -5,8 +5,10 @@ import { useSelector } from "react-redux";
 import { RootState } from "../reducers";
 
 export default function () {
-  const sessionId = uuid();
-  // process.env.NODE_ENV === "development" ? "XtRU5YgA6QwIingMeACY" : uuid();
+  const sessionId =
+    process.env.NODE_ENV === "development"
+      ? "e8009dda-8705-4058-b817-ae59c16645d7"
+      : uuid();
   useFirestoreConnect([{ collection: "sessions", doc: sessionId }]);
 }
 
