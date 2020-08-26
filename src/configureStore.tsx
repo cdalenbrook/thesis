@@ -9,10 +9,11 @@ import { firebase } from "./repositories/firebase";
 
 const logger = (createLogger as any)();
 
-const dev = process.env.NODE_ENV === "production";
+const dev = process.env.NODE_ENV === "development";
+
 let middleware = dev
   ? applyMiddleware(promise, thunk, logger)
-  : applyMiddleware(thunk);
+  : applyMiddleware(promise, thunk);
 
 if (dev) {
   middleware = composeWithDevTools(middleware);

@@ -37,7 +37,6 @@ const tree = (state = initialState, action: any): TreeState => {
       return {
         ...state,
         error: undefined,
-        //TODO: unpack action.payload to only return the prediction as [1] / [0]
         prediction: action.payload.data.prediction,
         isLoading: false,
       };
