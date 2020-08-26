@@ -54,7 +54,7 @@ function DecisionTree() {
           <ExplanationDiv>Explanation Div</ExplanationDiv>
         </HorizontalLayout>
         <BackHelpNext
-          previousRoute={Routes.training}
+          previousRoute={Routes.trainModel}
           helpRoute={Routes.home}
           nextRoute={Routes.testTree}
         />

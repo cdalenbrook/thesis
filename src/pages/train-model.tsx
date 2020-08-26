@@ -13,7 +13,9 @@ const ExplanationDiv = styled.div`
   border-radius: 8px;
   margin: 10px;
   margin-bottom: 20px;
+  line-height: 25px;
   padding: 20px;
+  font-size: 1.2em;
   -webkit-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   -moz-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
@@ -25,11 +27,23 @@ function TrainModel() {
     <>
       <Layout>
         <Header />
-        <Title>Let's Train the Model!</Title>
+        <Title>Putting Everything Together</Title>
         <ExplanationDiv>
-          Explanation on how the next page will work
+          In order for Yuki to be able to classify new toys into the categories
+          you chose, he needs to use the examples you have given him, as well as
+          the algorithm you programmed. The combination of these two things will
+          allow him to learn associations between a toys features and their
+          corresponding category. Once Yuki has learned these rules, he can make
+          a decision tree, and then use this to make educated guesses about what
+          category a new toy belongs into.
+          <br></br>
+          <br></br>
+          The next page will display the decision tree that was generated using
+          the code you made. Try to see what types of rules are encoded in the
+          decision tree by going through the tree with a specific toy in mind.
+          Does the decision tree find the correct classification for your toy?
         </ExplanationDiv>
-        <Button onClick={() => history.push("/train-model/2")}>TRAIN!</Button>
+        <Button onClick={() => history.push("/decision-tree")}>Done</Button>
       </Layout>
     </>
   );

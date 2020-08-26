@@ -1,31 +1,27 @@
-import { ICategories, TreeState } from "../types";
+import { ICategories } from "../types";
 import { ToysAndVals } from "../data/toys";
 import axios from "axios";
+const baseUrl = "https://decision-tree-spacwb4zba-uc.a.run.app";
 
-export const trainTree = (categories: ICategories, toys: ToysAndVals) => ({
-  type: "TRAIN_TREE",
-  payload: axios.post("https://yuki-server-thesis.herokuapp.com/make-tree", {
-    dev: process.env.NODE_ENV === "development",
+export const trainTree = (
+  session_id: string,
+  categories: ICategories,
+  toys: ToysAndVals
+) => ({
+  type: "CREATE_TREE",
+  payload: axios.post(`${baseUrl}/create-tree`, {
+    id: session_id,
     category: [categories.category1, categories.category2],
     data: toys,
   }),
 });
 
-export const predictItem = (toyId: string, state: TreeState) => {
-  alert(
-    JSON.stringify({
-      toy_id: toyId,
-      ...state.data,
-    })
-  );
+export const predictItem = (session_id: string, toyId: string) => {
   return {
     type: "PREDICT",
-    payload: axios.post(
-      "https://yuki-server-thesis.herokuapp.com/predict-category",
-      {
-        toy_id: toyId,
-        ...state.data,
-      }
-    ),
+    payload: axios.post(`${baseUrl}/predict`, {
+      id: session_id,
+      toy_id: toyId,
+    }),
   };
 };

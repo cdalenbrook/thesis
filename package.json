@@ -29,6 +29,7 @@
     "@umijs/hooks": "^1.9.2",
     "axios": "^0.19.2",
     "clsx": "latest",
+    "firebase": "^7.18.0",
     "formik": "^2.1.4",
     "prop-types": "^15.7.2",
     "react": "latest",
@@ -38,9 +39,12 @@
     "react-qr-reader": "^2.2.1",
     "react-quiz-component": "^0.3.4",
     "react-redux": "^7.2.0",
+    "react-redux-firebase": "^3.7.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "latest",
     "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-firestore": "^0.13.0",
     "redux-logger": "^3.0.6",
     "redux-promise": "^0.6.0",
     "redux-promise-middleware": "^6.1.2",
@@ -64,6 +68,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.1.4"
+    "@types/react-router-dom": "^5.1.4",
+    "@types/redux-devtools-extension": "^2.13.2"
   }
 }

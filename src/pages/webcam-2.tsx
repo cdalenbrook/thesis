@@ -9,6 +9,7 @@ import { toys, Toy } from "../data/toys";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../reducers";
 import { predictItem } from "../actions";
+import { useTypedSession } from "../hooks/useUserSession";
 
 const Section = styled.div`
   width: 80vw;
@@ -72,7 +73,10 @@ function Webcam2() {
   const [toy, setToy] = React.useState<Toy>();
   const [currentData, setCurrentData] = React.useState<string>();
   const { categories } = useSelector((state: RootState) => state.categories);
-  const tree = useSelector((state: RootState) => state.tree);
+  const { isLoading, prediction } = useSelector(
+    (state: RootState) => state.tree
+  );
+  const session = useTypedSession();
   const dispatch = useDispatch();
 
   const handleError = (err: any) => {
@@ -80,10 +84,10 @@ function Webcam2() {
   };
 
   const handleScan = (toy_id: string | null) => {
-    if (!toy_id || toy_id === currentData) return;
+    if (!toy_id || !session || toy_id === currentData) return;
     setToy(toys[toy_id]);
     setCurrentData(toy_id);
-    dispatch(predictItem(toy_id, tree));
+    dispatch(predictItem(session.id, toy_id));
   };
 
   return (
@@ -106,7 +110,14 @@ function Webcam2() {
                 <ListItem>Size: {toy?.size} </ListItem>
                 <ListItem>Fluffy: {toy?.fluffy.toString()} </ListItem>
               </List>
-              <Prediction>Yuki Predicts: _____</Prediction>
+              <Prediction>
+                Yuki Predicts:{" "}
+                {isLoading || !prediction
+                  ? "_____"
+                  : prediction[0] === 0
+                  ? categories.category1
+                  : categories.category2}
+              </Prediction>
             </YukiRecognizes>
             <Title> This toy belongs to: </Title>
             <ButtonDiv>

@@ -19,6 +19,10 @@ export const Button = styled.div<cssprops>`
   box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   font-size: 1.5em;
   cursor: pointer;
+  :hover {
+    background-color: var(--hover);
+    cursor: pointer;
+  }
 `;
 
 export const Layout = styled.div`

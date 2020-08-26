@@ -10,7 +10,6 @@ interface CategoriesState {
 interface TreeState {
   isLoading: boolean;
   error?: any;
-  data?: any;
   prediction?: number[];
 }
 

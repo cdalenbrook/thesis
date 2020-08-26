@@ -13,6 +13,8 @@ const ExplanationDiv = styled.div`
   border-radius: 8px;
   margin: 10px;
   padding: 20px;
+  line-height: 25px;
+  font-size: 1.2em;
   -webkit-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   -moz-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
@@ -25,7 +27,18 @@ function GenerateModel1() {
         <Header />
         <Title>Let's Generate the Model!</Title>
         <ExplanationDiv>
-          Explanation on how the next page will work
+          Now that you have separated all the toys into the two categories, you
+          need to program the decision tree that will help Yuki classify new
+          toys in the future.
+          <br></br>
+          <br></br>
+          On the next page you will be able to program the algorithm by dragging
+          and dropping different blocks into the correct order. Each block is
+          responsible for a different part of the algorithm. On the right side
+          of the screen are all the blocks. Try to organise them into the left
+          side according to what you learned about decision trees previously. If
+          you get stuck, or unsure, press the help button at the bottom of the
+          screen. Good luck!
         </ExplanationDiv>
         <BackNextRow nextRoute="/generate-model/2" previousRoute="/webcam-1" />
       </Layout>

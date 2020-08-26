@@ -25,6 +25,7 @@ import {
   DevArea,
 } from "./pages";
 import { Routes } from "./router";
+import useUserSession from "./hooks/useUserSession";
 
 const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -79,10 +80,12 @@ const GlobalStyle = createGlobalStyle`
     --buttonBlue: #A8D7FA; 
     --div1Blue: #78B6FA; 
     --div2Blue: #88CBFA; 
+    --hover: #364550;
   }
 `;
 
 export default function App() {
+  useUserSession();
   return (
     <>
       <GlobalStyle />

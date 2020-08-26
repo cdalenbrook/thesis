@@ -5,24 +5,22 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import App from "./App";
 import theme from "./theme";
 import { BrowserRouter as Router } from "react-router-dom";
-import { createStore, applyMiddleware } from "redux";
-import rootReducer from "./reducers";
 import { Provider } from "react-redux";
-import promise from "redux-promise-middleware";
-import logger from "redux-logger";
-import thunk from "redux-thunk";
+import { ReactReduxFirebaseProvider } from "react-redux-firebase";
+import configureStore from "./configureStore";
 
-const middleware = applyMiddleware(promise, thunk, logger);
-const store = createStore(rootReducer, middleware);
+const { store, rrfProps } = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Router>
-        <App />
-      </Router>
-    </ThemeProvider>
+    <ReactReduxFirebaseProvider {...rrfProps}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Router>
+          <App />
+        </Router>
+      </ThemeProvider>
+    </ReactReduxFirebaseProvider>
   </Provider>,
   document.querySelector("#root")
 );

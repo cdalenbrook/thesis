@@ -6,22 +6,21 @@ const initialState: TreeState = {
 
 const tree = (state = initialState, action: any): TreeState => {
   switch (action.type) {
-    case "TRAIN_TREE_PENDING":
+    case "CREATE_TREE_PENDING":
       return {
         ...state,
         isLoading: true,
       };
-    case "TRAIN_TREE_REJECTED":
+    case "CREATE_TREE_REJECTED":
       return {
         ...state,
         error: action.payload,
         isLoading: false,
       };
-    case "TRAIN_TREE_FULFILLED":
+    case "CREATE_TREE_FULFILLED":
       return {
         ...state,
         isLoading: false,
-        data: action.payload["data"],
       };
     case "PREDICT_PENDING":
       return {
@@ -37,8 +36,10 @@ const tree = (state = initialState, action: any): TreeState => {
     case "PREDICT_FULFILLED":
       return {
         ...state,
+        error: undefined,
+        //TODO: unpack action.payload to only return the prediction as [1] / [0]
+        prediction: action.payload.data.prediction,
         isLoading: false,
-        prediction: action.payload,
       };
   }
   return state;

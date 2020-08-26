@@ -10,6 +10,7 @@ import { useCounter } from "@umijs/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../reducers";
 import { trainTree } from "../actions";
+import { useTypedSession } from "../hooks/useUserSession";
 
 const Section = styled.div`
   width: 80vw;
@@ -79,11 +80,14 @@ const Button2 = styled.button`
   -moz-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   font-size: 1.5em;
-  cursor: pointer;
+  :hover {
+    background-color: var(--hover);
+    cursor: pointer;
+  }
   border: none;
 `;
 
-const kNumToys = 1;
+const kNumToys = 12;
 const previousRoute = Routes.insertCategories;
 const helpRoute = Routes.home;
 const nextRoute = Routes.generateModel1;
@@ -97,6 +101,7 @@ function Webcam1() {
   const [toy, setToy] = React.useState<Toy>();
   const [currentID, setCurrentID] = React.useState<string>("");
   const [current, { inc }] = useCounter(0, { min: 0, max: kNumToys });
+  const session = useTypedSession();
 
   const setCategory = (category: boolean) => {
     if (!toy) return;
@@ -122,7 +127,9 @@ function Webcam1() {
       alert(`You've only given me ${current}/${kNumToys} toys.\n\nKeep going!`);
     } else {
       //go to next page
-      dispatch(trainTree(categories, state));
+      if (!session) return;
+      console.log(`trainTree(${session.id}, ${categories}, ${state})`);
+      dispatch(trainTree(session.id, categories, state));
       router.push(nextRoute);
     }
   };

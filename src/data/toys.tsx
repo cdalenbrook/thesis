@@ -113,4 +113,11 @@ export const toys: AllToys = {
     size: "small",
     fluffy: false,
   },
+  buzz_001: {
+    name: "Buzz",
+    wheels: false,
+    mainColor: "multi",
+    size: "small",
+    fluffy: false,
+  },
 };
