@@ -128,8 +128,7 @@ function InsertCategories() {
             <Button
               height="120%"
               onClick={() => {
-                if (router.length > 0) router.goBack();
-                else router.push(previousRoute);
+                router.push(previousRoute);
               }}
             >
               Back

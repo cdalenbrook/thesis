@@ -1,7 +1,7 @@
 import React from "react";
 import QrReader from "react-qr-reader";
 import styled from "styled-components";
-import { Button, Layout } from "../styles";
+import { Layout } from "../styles";
 import Header from "../components/header";
 import BackHelpNext from "../components/back-help-next";
 import { Routes } from "../router";
@@ -31,27 +31,16 @@ const InfoDiv = styled.div`
   box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
 `;
 
-const YukiRecognizes = styled.div`
-  background-color: #88cbfa;
-  border-radius: 8px;
-  height: 60%;
-  width: 80%;
-  float: left;
-  -webkit-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
-  -moz-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
-  box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
-`;
-
-const ButtonDiv = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-`;
-
 const Title = styled.h1`
   font-size: 2em;
   text-align: center;
   padding: 10px;
+`;
+
+const ListDiv = styled.div`
+  display: flex;
+  justify-content: left;
+  width: 80%;
 `;
 
 const List = styled.ul`
@@ -102,32 +91,23 @@ function Webcam2() {
             style={{ width: "40%" }}
           />
           <InfoDiv>
-            <YukiRecognizes>
-              <Title> Yuki Recognizes: {toy?.name} </Title>
+            <Title> Yuki Recognizes: {toy?.name} </Title>
+            <ListDiv>
               <List>
                 <ListItem>Wheels: {toy?.wheels.toString()} </ListItem>
                 <ListItem>Main Colour: {toy?.mainColor} </ListItem>
                 <ListItem>Size: {toy?.size} </ListItem>
                 <ListItem>Fluffy: {toy?.fluffy.toString()} </ListItem>
               </List>
-              <Prediction>
-                Yuki Predicts:{" "}
-                {isLoading || !prediction
-                  ? "_____"
-                  : prediction[0] === 0
-                  ? categories.category1
-                  : categories.category2}
-              </Prediction>
-            </YukiRecognizes>
-            <Title> This toy belongs to: </Title>
-            <ButtonDiv>
-              <Button onClick={() => alert("category 1")}>
-                {categories.category1}
-              </Button>
-              <Button onClick={() => alert("category 2")}>
-                {categories.category2}
-              </Button>
-            </ButtonDiv>
+            </ListDiv>
+            <Prediction>
+              Yuki Predicts:{" "}
+              {isLoading || !prediction
+                ? "______"
+                : prediction[0] === 0
+                ? categories.category2
+                : categories.category1}
+            </Prediction>
           </InfoDiv>
         </Section>
         <BackHelpNext

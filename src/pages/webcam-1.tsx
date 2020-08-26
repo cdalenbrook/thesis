@@ -41,8 +41,11 @@ const YukiRecognizes = styled.div`
   -webkit-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   -moz-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
-  /* overflow: scroll;
-  overflow-x: hidden; */
+  overflow: scroll;
+  overflow-x: hidden;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const ButtonDiv = styled.div`
@@ -52,14 +55,14 @@ const ButtonDiv = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 2.5em;
+  font-size: 2em;
   text-align: center;
   padding-top: 10px;
 `;
 
 const List = styled.ul`
   padding: 10px;
-  font-size: 2em;
+  font-size: 1.5em;
   margin: 0, 0, 20, 30;
 `;
 

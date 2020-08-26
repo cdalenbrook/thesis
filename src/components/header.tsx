@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import icon from "../images/icon.png";
+import tree from "../images/tree.png";
 import { useHistory } from "react-router-dom";
 
 const NavBar = styled.nav`
@@ -14,7 +14,7 @@ const NavBar = styled.nav`
 `;
 
 const Logo = styled.img`
-  height: 80%;
+  height: 40%;
   width: auto;
   cursor: pointer;
 `;
@@ -29,7 +29,7 @@ function Header() {
   return (
     <>
       <NavBar>
-        <Logo onClick={() => history.push("/")} src={icon} />
+        <Logo onClick={() => history.push("/")} src={tree} />
         <About onClick={() => history.push("/about")}>about</About>
       </NavBar>
     </>

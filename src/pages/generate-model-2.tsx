@@ -33,8 +33,8 @@ const CodeDiv = styled.div`
 `;
 
 const Block = styled.div`
-  margin: 10px;
-  padding: 20px;
+  margin: 5px;
+  padding: 10px;
   background-color: var(--div2Blue);
   border-radius: 8px;
   -webkit-box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
@@ -42,6 +42,8 @@ const Block = styled.div`
   box-shadow: 6px 6px 5px 0px rgba(64, 138, 241, 0.55);
   user-select: "none";
   text-align: left;
+  font-size: 1em;
+  line-height: 20px;
 `;
 
 const ColumnTitle = styled.h1`
@@ -50,8 +52,21 @@ const ColumnTitle = styled.h1`
 `;
 
 const itemsList = [
-  { id: "item1", content: "first item" },
-  { id: "item2", content: "second item" },
+  {
+    id: "item1",
+    content:
+      "Calculate the importance of each property in the data when making a decision on the classification ",
+  },
+  {
+    id: "item2",
+    content:
+      "Order the properties of the data from most important to least important",
+  },
+  {
+    id: "item3",
+    content:
+      "Make the most important feature be the decision at the root of the decision tree and split the data according to this decision ",
+  },
 ];
 
 const columnsList = {
@@ -160,7 +175,7 @@ function GenerateModel2() {
       </HorizontalLayout>
       <BackHelpNext
         previousRoute={Routes.generateModel1}
-        helpRoute={Routes.home}
+        helpRoute={Routes.lesson2}
         nextRoute={Routes.trainModel}
       />
     </Layout>

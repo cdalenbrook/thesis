@@ -9,6 +9,7 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-x: hidden;
 `;
 
 const Title = styled.h1`
@@ -17,7 +18,7 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled.p`
-  font-size: 1em;
+  font-size: 1.5em;
   padding: 50px;
 `;
 
@@ -28,7 +29,7 @@ const Image = styled.img`
 const ImageDiv = styled.div`
   display: flex;
   justify-content: center;
-  height: 200px;
+  height: 350px;
 `;
 
 function HomePage() {
