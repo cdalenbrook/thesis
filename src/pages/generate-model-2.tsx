@@ -58,14 +58,23 @@ const itemsList = [
       "Calculate the importance of each property in the data when making a decision on the classification ",
   },
   {
+    id: "item3",
+    content:
+      "Make the most important feature be the decision at the root of the decision tree and split the data according to this decision ",
+  },
+  {
     id: "item2",
     content:
       "Order the properties of the data from most important to least important",
   },
   {
-    id: "item3",
+    id: "item4",
     content:
-      "Make the most important feature be the decision at the root of the decision tree and split the data according to this decision ",
+      "Split the data along the decision so that all toys are split according to whether or not they have that property",
+  },
+  {
+    id: "item5",
+    content: "Continue splitting according to the features in the dataset",
   },
 ];
 
@@ -175,7 +184,7 @@ function GenerateModel2() {
       </HorizontalLayout>
       <BackHelpNext
         previousRoute={Routes.generateModel1}
-        helpRoute={Routes.lesson2}
+        helpRoute={Routes.home}
         nextRoute={Routes.trainModel}
       />
     </Layout>
