@@ -4,10 +4,9 @@ import "firebase/auth";
 import "firebase/firestore";
 let app: firebase.app.App;
 
-//!!!!!!!!BAD PRACTICE!!!!!!!!!!!
 //TODO: create .env to store these credentials
 const firebaseConfig = {
-  apiKey: "AIzaSyBz8K1Bd5UGlO3b5hgraeoMutfJZ5JbdMs",
+  // apiKey: , INSERT WITH YOUR API KEY AND UNCOMMENT
   authDomain: "yuki-b8063.firebaseapp.com",
   databaseURL: "https://yuki-b8063.firebaseio.com",
   projectId: "yuki-b8063",
