@@ -1,5 +1,2 @@
-# Bachelor Thesis Website
-
-## How to use
-
+# Front-End Code for my Bachelor Thesis Website
 
